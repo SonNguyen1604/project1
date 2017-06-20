@@ -29,5 +29,9 @@ en:
       password: "Password"
       new: "New user?"
       signup_now: "Sign up now!"
+      remember: "Remember me on this computer"
     create:
       fail_login: "Invalid email/password combination!"
+      login_success: "Welcome back, "
+    destroy:
+      logout: "You have logged out to your account successfully!"
