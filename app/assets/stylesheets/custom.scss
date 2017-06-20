@@ -1,10 +1,10 @@
-@import 'bootstrap';
 @import 'bootstrap-sprockets';
+@import 'bootstrap';
 
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
-$bright-gray: #bbb;
+$light-gray: #bbb;
 $gray: #e8e8e8;
 
 @mixin menu{
@@ -112,7 +112,7 @@ footer {
   overflow: hidden;
   padding-top: 5px;
   a {
-    color: blue;
+    color: $gray;
     &:hover {
       color: $gray-darker;
     }
@@ -157,12 +157,196 @@ aside {
   }
 }
 
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+.stats {
+  margin-top: 0;
+  overflow: auto;
+  padding: 0;
+  a {
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    float: left;
+    padding: 0 10px;
+    &:first-child {
+      border: 0;
+      padding-left: 0;
+    }
+    &:hover {
+      color: blue;
+      text-decoration: none;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user-avatars {
+  margin-top: 10px;
+  overflow: auto;
+  .gravatar {
+    margin: 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.follow {
+  padding: 0;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  @include box_sizing;
+  border: 1px solid $light-gray;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+input {
+  height: auto !important;
+}
+
+.error-explanation {
+  color: red;
+  ul {
+    margin: 0 0 30px 0;
+  }
+}
+
+.field-with-errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.checkbox {
+  margin: -10px 0px 10px;
+  span {
+    font-weight: normal;
+    margin-left: 20px;
+  }
+}
+
+.session_remember_me {
+  margin-left: 0 !important;
+  width: auto;
+}
+
+/* Users index */
+
+.users-list {
+  list-style: none;
+  margin: 0;
+  a{
+    display:block
+  }
+  li {
+    border-bottom: 1px solid $gray-lighter;
+    display: inline-block;
+    overflow: auto;
+    padding: 10px 0;
+    width: 32%;
+  }
+}
+
+/* microposts */
+
+.microposts {
+  list-style: none;
+  padding: 0;
+  li {
+    border-top: 1px solid $gray;
+    overflow: hidden;
+    padding: 10px 0;
+  }
+  .user-post {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content-post {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin: 5px 10px 0 0;
+  }
+}
+
+.search-area{
+  display: inline-block;
+  padding: 0px 2px;
+  position: relative;
+  vertical-align: middle;
+  width: 300px;
+  input{
+    margin-bottom: 0px;
+  }
+}
+
+.list-search {
+  background: white;
+  border-top: 0;
+  border: 1px solid #ccc;
+  display: none;
+  list-style-type: none;
+  max-height: 400px;
+  overflow-y: scroll;
+  padding-left: 10px;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 999;
+  li{
+    overflow: hidden;
+    padding: 5px 0px;
+    a{
+      display: block;
+    }
+  }
+}
+
 aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
   }
 }
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+.post-img {
+  max-height: 400px;
+  width: auto;
+}
+
+/* miscellaneous */
 
 .debug-dump {
   @include box_sizing;

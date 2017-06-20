@@ -7,3 +7,18 @@ en:
       welcome: "Welcome to Project 1"
       home: "This is Project 1 Home Page"
       sign: "Sign up"
+  users:
+    new:
+      sign: "Sign up"
+      name: "Name"
+      email: "Email"
+      pass: "Password"
+      confirm: "Password confrimation"
+      create: "Sign up"
+    create:
+      success: "Sign up successed!"
+      fail: "Fail to sign up!"
+  shared:
+    error_messages:
+      error: "error"
+      form: "The form contain"
