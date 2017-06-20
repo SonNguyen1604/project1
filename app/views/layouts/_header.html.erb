@@ -3,7 +3,11 @@
     <%= link_to image_tag("rails.png"), root_path, class: "logo-img" %>
     <input type="checkbox" id="menuTrigger"/>
     <div class="menu">
-      <h3><%= link_to t(".sample"), root_path, id: "logo" %></h3>
+      <% if logged_in? %>
+        <h3><%= link_to current_user.name, "#", id: "logo" %></h3>
+      <% else %>
+        <h3><%= link_to t(".sample"), root_path, id: "logo" %></h3>
+      <% end %>
       <label for="menuTrigger" class="trigger">
         <div class="line"></div>
         <div class="line"></div>
@@ -12,6 +16,12 @@
       <ul class="links">
         <li class="link"><%= link_to t(".home"), root_path %></li>
         <li class="link"><%= link_to t(".help"), help_path %></li>
+        <% if logged_in? %>
+          <li class="link"><%= link_to t(".profile"), current_user %></li>
+          <li class="link"><%= link_to t(".logout"), logout_path, method: :delete %></li>
+        <% else %>
+          <li class="link"><%= link_to t(".login"), login_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>

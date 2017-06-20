@@ -11,8 +11,9 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      redirect_to @user
+      log_in @user
       flash[:success] = t ".success"
+      redirect_to @user
     else
       flash.now[:danger] = t ".fail"
       render :new
