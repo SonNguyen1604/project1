@@ -8,16 +8,37 @@ en:
       home: "This is Project 1 Home Page"
       sign: "Sign up"
   users:
-    new:
+    form:
       sign: "Sign up"
       name: "Name"
-      email: "Email"
+      mail: "Email"
       pass: "Password"
       confirm: "Password confrimation"
       create: "Sign up"
     create:
       success: "Sign up successed!"
       fail: "Fail to sign up!"
+    edit:
+      edit: "Update your profile"
+      name: "Name"
+      email: "Email"
+      pass: "Password"
+      confirm: "Password confrimation"
+      edit_info: "Save change"
+      login_first: "Please log in first!"
+    new:
+      sign: "Sign up"
+      create: "Create my account"
+    update:
+      updated: "Profile updated!"
+      fail_update: "Failed to update your profile!"
+    index:
+      all: "All users"
+    user:
+      delete: "Delete"
+      sure: "You sure?"
+    destroy:
+      deleted: "User deleted!"
   shared:
     error_messages:
       error: "error"
