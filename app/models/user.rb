@@ -12,7 +12,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
-    class << self
+  scope :id_sort, ->{order id: :asc}
+
+  class << self
     def digest string
       if ActiveModel::SecurePassword.min_cost
         cost = BCrypt::Engine::MIN_COST

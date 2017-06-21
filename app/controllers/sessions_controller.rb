@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       alert += user.name
       flash[:success] = alert
       "1" == params[:session][:remember_me] ? remember(user) : forget(user)
-      redirect_to user
+      redirect_back_or user
     else
       flash[:danger] = t ".fail_login"
       render :new
