@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @microposts = @user.microposts
+      .select(:id, :content, :user_id, :created_at, :title, :picture).micropost_sort
+      .paginate page: params[:page], per_page: Settings.micropost.post_per_page
   end
 
   def new

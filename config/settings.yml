@@ -5,12 +5,14 @@ user:
   per_page: 12
   take: 6
   lorem: 5
+  title: 1
 helpers:
   max_size: 80
 users_form:
   size: 50
 micropost:
+  max_title_length: 50
   max_content_length: 150
   post_per_page: 5
 picture:
-  size: 5
+  size: 2
