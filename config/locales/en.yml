@@ -7,6 +7,7 @@ en:
       welcome: "Welcome to Project 1"
       home: "This is Project 1 Home Page"
       sign: "Sign up"
+      post_feed: "Micropost"
   users:
     form:
       sign: "Sign up"
@@ -43,6 +44,13 @@ en:
     error_messages:
       error: "error"
       form: "The form contain"
+    user_info:
+      post: "post"
+      profile: "view my profile"
+    micropost_form:
+      title: "Post title..."
+      create_post: "Compose new post..."
+      post: "Create post"
   sessions:
     new:
       login: "Login"
@@ -56,3 +64,15 @@ en:
       login_success: "Welcome back, "
     destroy:
       logout: "You have logged out to your account successfully!"
+  microposts:
+    file_size: "Maximum file size is 5MB. Please choose a smaller file."
+    create:
+      fail_create: "Fail to create a post!"
+      created: "Post created!"
+    micropost:
+      delete: "Delete"
+      ago: "ago"
+      posted: "Posted"
+      sure: "You sure?"
+    destroy:
+      deleted: "You have deleted post successfully."

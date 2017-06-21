@@ -16,3 +16,10 @@ User.create! name: "Example User", email: "example@railstutorial.org",
   User.create! name: name, email: email,
     password: password, password_confirmation: password
 end
+
+users = User.order(:created_at).take Settings.user.take
+50.times do
+  title = Faker::Lorem.sentence Settings.user.title
+  content = Faker::Lorem.sentence Settings.user.Lorem
+  users.each {|user| user.microposts.create! title: title, content: content}
+end
