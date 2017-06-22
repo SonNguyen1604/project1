@@ -1,0 +1,31 @@
+<% provide :title, @micropost.title %>
+<li class="list-comment">
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to gravatar_for @micropost.user, @micropost.user %>
+        <span class="user-post"><%= link_to @micropost.user.name, @micropost.user %></span>
+        <span class="title-post"><%= @micropost.title %></span>
+        <span class="time-post">
+          <%= t ".posted" %> <%= time_ago_in_words @micropost.created_at %> <%= t ".ago" %>
+        </span>
+        <p class="content-post"><%= @micropost.content %></p>
+        <span class="timestamp">
+          <% if current_user? @micropost.user %>
+            <%= link_to t(".delete"), @micropost, method: :delete,
+              class: "delete-button", data: {confirm: t(".sure")} %>
+          <% end %>
+        </span>
+        <%= image_tag @micropost.picture.url, class: "post-img" if @micropost.picture? %>
+        <% if current_user.present? %>
+          <% if current_user.following? @user or current_user? @user %>
+            <%= render "comments/form" %>
+          <% end %>
+        <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="comment-list">
+        <%= render @comments %>
+      </div>
+    </div>
+  </div>
+</li>
