@@ -1,0 +1,12 @@
+<div class="comment-item">
+  <%= link_to gravatar_for comment.user, comment.user %>
+  <span class="user-post"><%= link_to comment.user.name, comment.user %></span>
+  <span class="time-post">
+    <%= t ".commented" %> <%= time_ago_in_words comment.created_at %> <%= t ".ago" %>
+  </span>
+  <p><%= comment.content %></p>
+  <% if current_user? comment.user or current_user? @micropost.user %>
+    <%= link_to "Delete", [comment.micropost, comment], class: "delete-button",
+      method: :delete, data: {confirm: t(".sure")} %>
+  <% end %>
+</div>

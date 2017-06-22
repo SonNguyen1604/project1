@@ -1,14 +1,60 @@
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for micropost.user, micropost.user %>
   <span class="user-post"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="content-post"><b><%= micropost.title %></b></span>
+  <span class="title-post"><%= link_to micropost.title, micropost %></span>
   <span class="content-post"><%= micropost.content %></span>
-  <%= image_tag micropost.picture.url if micropost.picture? %>
+  <span data-toggle="modal" data-target="#comment-<%= micropost.id %>"
+    class="show-comments">
+    <%= pluralize micropost.comments.size, t(".comments") %>
+  </span>
   <span class="timestamp">
-    <%= t ".posted" %> <%= time_ago_in_words micropost.created_at %> <%= t ".ago" %>.
+    <span class="time-post">
+      <%= t ".posted" %> <%= time_ago_in_words micropost.created_at %> <%= t ".ago" %>.
+    </span>
     <% if current_user? micropost.user %>
-      <%= link_to t(".delete"), micropost, method: :delete,
+      <%= link_to t(".delete"), micropost, method: :delete, class: "delete-button",
         data: {confirm: t(".sure")} %>
     <% end %>
   </span>
+  <%= image_tag micropost.picture.url if micropost.picture? %>
+
+  <div id="comment-<%= micropost.id %>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><%= micropost.title %></h4>
+        </div>
+        <div class="modal-body">
+          <% micropost.comments.each do |comment| %>
+            <div class="comment-item">
+              <%= link_to gravatar_for comment.user, comment.user %>
+              <span class="user-post"><%= link_to comment.user.name, comment.user %></span>
+              <span class="time-post">
+                <%= t ".commented" %> <%= time_ago_in_words comment.created_at %> <%= t ".ago" %>
+              </span>
+              <p><%= comment.content %></p>
+              <% if current_user? comment.user or current_user? micropost.user %>
+                <%= link_to "Delete", [comment.micropost, comment], class: "delete-button",
+                  method: :delete, data: {confirm: t(".sure")} %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <% if logged_in? %>
+            <% if current_user.following? @user or current_user? @user %>
+              <%= form_for [micropost, micropost.comments.build], remote: true do |f| %>
+                <%= render "shared/error_messages", object: f.object %>
+                <div class="field comment-form">
+                  <%= f.text_area :content, placeholder: t(".create_post") %>
+                </div>
+                <%= f.submit t(".post"), class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </li>

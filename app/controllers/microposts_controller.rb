@@ -1,6 +1,7 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
+  before_action :load_post, only: :show
 
   def create
     @micropost = current_user.microposts.build micropost_params
@@ -15,6 +16,13 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def show
+    @comments = @micropost.comments
+      .select(:id, :user_id, :micropost_id, :content, :created_at)
+      .order(created_at: :asc)
+    @user = User.find_by id: @micropost.user_id
+  end
+
   def destroy
     if @micropost.destroy
       flash[:success] = t ".deleted"
@@ -25,6 +33,10 @@ class MicropostsController < ApplicationController
   end
 
   private
+
+  def load_post
+    @micropost = Micropost.find_by id: params[:id]
+  end
 
   def micropost_params
     params.require(:micropost).permit :title, :content, :picture
