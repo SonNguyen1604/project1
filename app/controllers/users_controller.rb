@@ -54,6 +54,20 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def following
+    @title = t ".following"
+    @users = @user.following.select(:id, :email, :name).id_sort
+      .paginate page: params[:page], per_page: Settings.user.per_page
+    render :show_follow
+  end
+
+  def followers
+    @title = t ".followers"
+    @users = @user.followers.select(:id, :email, :name).id_sort
+      .paginate page: params[:page], per_page: Settings.user.per_page
+    render :show_follow
+  end
+
   private
 
   def load_user

@@ -40,6 +40,14 @@ en:
       sure: "You sure?"
     destroy:
       deleted: "User deleted!"
+    unfollow:
+      unfollow: "Unfollow"
+    follow:
+      follow: "Follow"
+    following:
+      following: "Following"
+    followers:
+      followers: "Followers"
   shared:
     error_messages:
       error: "error"

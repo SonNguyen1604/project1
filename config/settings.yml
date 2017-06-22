@@ -11,7 +11,7 @@ helpers:
 users_form:
   size: 50
 micropost:
-  max_title_length: 50
+  max_title_length: 100
   max_content_length: 150
   post_per_page: 5
 picture:
