@@ -5,6 +5,13 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
+    if params[:search]
+      @users = User.search_user params[:name]
+      render json: {
+        html_search: render_to_string(@users, layout: false)
+      }
+    end
+
     @users = User.select(:id, :name, :email).id_sort
       .paginate page: params[:page], per_page: Settings.user.per_page
   end

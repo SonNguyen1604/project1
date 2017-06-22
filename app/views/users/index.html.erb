@@ -1,6 +1,15 @@
 <% provide :title, t(".all") %>
 <h1><%= t ".all" %></h1>
 
+<div class="search-result">
+  <%= form_for :search do |f| %>
+    <%= f.text_field :search_key, remote: true, class: "form-control search_box" %>
+  <% end %>
+
+  <ul class="search-area">
+  </ul>
+</div>
+
 <%= will_paginate %>
 
 <ul class="users-list">
