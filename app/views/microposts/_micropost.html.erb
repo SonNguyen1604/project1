@@ -42,14 +42,17 @@
           <% end %>
         </div>
         <div class="modal-footer">
-          <%= form_for [micropost, micropost.comments.build], remote: true do |f| %>
-            <%= render "shared/error_messages", object: f.object %>
-            <div class="field comment-form">
-              <%= f.text_area :content, placeholder: t(".create_post") %>
-            </div>
-            <%= f.submit t(".post"), class: "btn btn-primary" %>
+          <% if logged_in? %>
+            <% if current_user.following? @user or current_user? @user %>
+              <%= form_for [micropost, micropost.comments.build], remote: true do |f| %>
+                <%= render "shared/error_messages", object: f.object %>
+                <div class="field comment-form">
+                  <%= f.text_area :content, placeholder: t(".create_post") %>
+                </div>
+                <%= f.submit t(".post"), class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
           <% end %>
-
         </div>
       </div>
     </div>
