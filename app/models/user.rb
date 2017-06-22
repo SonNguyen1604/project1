@@ -22,6 +22,7 @@ class User < ApplicationRecord
   has_secure_password
 
   scope :id_sort, ->{order id: :asc}
+  scope :search_user, ->keywords{where "name LIKE ?", "%#{keywords}%"}
 
   class << self
     def digest string

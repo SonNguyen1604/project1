@@ -308,11 +308,30 @@ input {
 }
 
 .search-area{
+  background: white;
+  border-top: 0;
+  border: 1px solid lightgray;
   display: inline-block;
-  padding: 0px 2px;
-  position: relative;
+  padding: 0px 10px;
+  position: absolute;
   vertical-align: middle;
-  width: 300px;
+  width: 100%;
+  z-index: 99999;
+  max-height: 400px;
+  overflow-y: scroll;
+  input{
+    margin-bottom: 0px;
+  }
+  li{
+    float: left;
+    list-style-type: none;
+    padding: 5px 0px;
+    width: 100%;
+  }
+}
+
+.search-result{
+  position: relative;
   input{
     margin-bottom: 0px;
   }
