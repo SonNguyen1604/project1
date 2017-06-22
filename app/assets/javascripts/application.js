@@ -18,3 +18,9 @@
 //= require i18n/translations
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  setTimeout(function(){
+    $('.alert').slideUp();
+  }, 2000);
+})

@@ -9,6 +9,9 @@ en:
       sign: "Sign up"
       post_feed: "Micropost"
   users:
+    show:
+      joined: "Joined"
+      post: "Post"
     form:
       sign: "Sign up"
       name: "Name"
@@ -82,5 +85,26 @@ en:
       ago: "ago"
       posted: "Posted"
       sure: "You sure?"
+      comments: "comment"
+      create_post: "Leave your comment..."
+      post: "Comment"
     destroy:
       deleted: "You have deleted post successfully."
+    show:
+      ago: "ago"
+      delete: "Delete"
+      sure: "You sure?"
+  comments:
+    form:
+      create_post: "Leave your comment..."
+      post: "Comment"
+    comment:
+      commented: "Commented"
+      ago: "ago"
+      sure: "You sure?"
+    create:
+      fail_comment: "Fail to create comment"
+      commented: "Commented to post!"
+    destroy:
+      comment_deleted: "You have deleted comment!"
+      fail_delete: "You cant delete comment."

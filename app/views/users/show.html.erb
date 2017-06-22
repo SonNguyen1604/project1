@@ -5,8 +5,13 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
-        <%= @user.created_at %>
       </h1>
+      <span class="join-date">
+        <%= t ".joined" %>: <%= @user.created_at.strftime "%d/%m/%Y" %>
+      </span>
+      <span class="join-date">
+        <%= t ".post" %>: <%= @user.microposts.size %>
+      </span>
     </section>
     <section class="stats">
       <%= render "shared/stats" %>

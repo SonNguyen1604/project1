@@ -4,8 +4,10 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
-$light-gray: #bbb;
 $gray: #e8e8e8;
+$light-gray: #bbb;
+$orange-user: #FF5722;
+$weak-blue: #337ab7;
 
 @mixin menu{
   -moz-user-select: none;
@@ -143,7 +145,7 @@ aside {
     h1 {
       font-size: 1.4em;
       letter-spacing: -1px;
-      margin: 3px 0px 0px;
+      margin: 3px 0px 5px;
       text-align: left;
     }
     span {
@@ -180,7 +182,7 @@ aside {
       padding-left: 0;
     }
     &:hover {
-      color: blue;
+      color: $orange-user;
       text-decoration: none;
     }
   }
@@ -270,13 +272,10 @@ input {
     border-top: 1px solid $gray;
     overflow: hidden;
     padding: 10px 0;
+    position: relative;
     img{
       max-height: 300px;
     }
-  }
-  .user-post {
-    margin-top: 5em;
-    padding-top: 0;
   }
   .content-post {
     display: block;
@@ -294,6 +293,17 @@ input {
   .gravatar {
     float: left;
     margin: 5px 10px 0 0;
+  }
+}
+
+.user-post{
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5em;
+  padding-top: 0;
+  a{
+    color: $orange-user;
+    display: block;
   }
 }
 
@@ -346,7 +356,13 @@ span.picture {
 
 .post-img {
   max-height: 400px;
+  max-width: 100%;
   width: auto;
+}
+
+.join-date, .time-post{
+  color: gray;
+  font-size: 12px;
 }
 
 /* miscellaneous */
@@ -561,4 +577,49 @@ span.picture {
   100% {
     opacity: 1;
   }
+}
+
+.list-comment{
+  overflow: hidden;
+  list-style-type: none;
+}
+
+.title-post{
+  display: block;
+  font-weight: bold;
+}
+
+.comment-form{
+  margin-top: 10px;
+}
+
+.comment-list{
+  height: 550px;
+  overflow-y: scroll;
+}
+
+.comment-item{
+  overflow: hidden;
+  position: relative;
+}
+
+.delete-button{
+  position: absolute;
+  right: 15px;
+  top: 5px;
+}
+
+.show-comments{
+  color: $weak-blue;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.modal-dialog{
+  width: 700px;
+}
+
+.modal-body{
+  height: 380px;
+  overflow-y: scroll;
 }
